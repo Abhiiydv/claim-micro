@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.claim.entity.Claim;
 import com.claim.service.ClaimService;
@@ -19,6 +20,9 @@ public class HomeController {
 
 	@Autowired
 	private ClaimService claimService;
+	
+	@Autowired
+	private RestTemplate restTemplate;
 	
 	@PostMapping("/submit")
 	public Integer submitClaim(@RequestBody Claim claim) {

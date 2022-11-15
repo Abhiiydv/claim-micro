@@ -25,7 +25,7 @@ public class HomeController {
 	private RestTemplate restTemplate;
 	
 	@PostMapping("/submit")
-	public Integer submitClaim(@RequestBody Claim claim) {
+	public Claim submitClaim(@RequestBody Claim claim) {
 		
 		return claimService.submitClaim(claim);
 	}

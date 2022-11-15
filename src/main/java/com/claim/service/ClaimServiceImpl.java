@@ -19,12 +19,12 @@ public class ClaimServiceImpl implements ClaimService{
 	private ClaimRepository claimRepo;
 	
 	@Override
-	public Integer submitClaim(Claim clame) {
+	public Claim submitClaim(Claim clame) {
 		// TODO Auto-generated method stub
 		System.out.println("Saving claim for memebr :"+clame.getMemberId());
 	    clame.setClaimDate(LocalDate.now());
 		Claim savedClaime= claimRepo.save(clame);
-		return savedClaime.getClaim_id();
+		return savedClaime;
 	}
 
 	@Override

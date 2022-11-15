@@ -7,7 +7,7 @@ import com.claim.entity.Claim;
 
 public interface ClaimService {
 
-	Integer submitClaim(Claim clame);
+	Claim submitClaim(Claim clame);
 	
 	Optional<Claim> fetchClaimById(Integer id);
 	

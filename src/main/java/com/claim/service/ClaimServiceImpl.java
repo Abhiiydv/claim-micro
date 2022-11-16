@@ -13,34 +13,41 @@ import com.claim.entity.Claim;
 import com.claim.repository.ClaimRepository;
 
 @Service
-public class ClaimServiceImpl implements ClaimService{
+public class ClaimServiceImpl implements ClaimService {
 
 	@Autowired
 	private ClaimRepository claimRepo;
-	
+
 	@Override
 	public Claim submitClaim(Claim clame) {
 		// TODO Auto-generated method stub
-		System.out.println("Saving claim for memebr :"+clame.getMemberId());
-	    clame.setClaimDate(LocalDate.now());
-		Claim savedClaime= claimRepo.save(clame);
+		System.out.println("Saving claim for memebr :" + clame.getMemberId());
+		clame.setClaimDate(LocalDate.now());
+		Claim savedClaime = claimRepo.save(clame);
 		return savedClaime;
 	}
 
 	@Override
 	public Optional<Claim> fetchClaimById(Integer id) {
 		// TODO Auto-generated method stub
-		System.out.println("Fetching data for clame id :"+id);
-		
+		System.out.println("Fetching data for clame id :" + id);
+
 		return claimRepo.findById(id);
 	}
-	
+
 	@Override
 	public List<Claim> fetchClaimByMemberId(Long id) {
 		// TODO Auto-generated method stub
-		System.out.println("Fetching claim data for member id : "+id);
-		List<Claim> claims =  claimRepo.findAll().stream().filter(p-> p.getMemberId() == id).collect(Collectors.toList());
+		System.out.println("Fetching claim data for member id : " + id);
+		List<Claim> claims = claimRepo.findAll().stream().filter(p -> p.getMemberId() == id)
+				.collect(Collectors.toList());
 		return claims;
+	}
+
+	@Override
+	public List<Claim> getAllClaims() {
+		// TODO Auto-generated method stub
+		return claimRepo.findAll();
 	}
 
 }

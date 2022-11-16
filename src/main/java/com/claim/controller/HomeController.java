@@ -20,25 +20,28 @@ public class HomeController {
 
 	@Autowired
 	private ClaimService claimService;
-	
+
 	@Autowired
 	private RestTemplate restTemplate;
-	
+
 	@PostMapping("/submit")
 	public Claim submitClaim(@RequestBody Claim claim) {
-		
+
 		return claimService.submitClaim(claim);
 	}
-	
+
 	@GetMapping("/claim/{id}")
-	public Optional<Claim> fetchByClaimId(@PathVariable Integer id)
-	{
+	public Optional<Claim> fetchByClaimId(@PathVariable Integer id) {
 		return claimService.fetchClaimById(id);
 	}
-	
+
 	@GetMapping("/claim/member/{id}")
-	public List<Claim> fetchClaimsByMemberId(@PathVariable Long id){
+	public List<Claim> fetchClaimsByMemberId(@PathVariable Long id) {
 		return claimService.fetchClaimByMemberId(id);
 	}
-	
+
+	@GetMapping("/claims")
+	public List<Claim> getAllClaims() {
+		return claimService.getAllClaims();
+	}
 }

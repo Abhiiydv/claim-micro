@@ -13,4 +13,5 @@ public interface ClaimService {
 	
 	List<Claim> fetchClaimByMemberId(Long id);
 	
+	List<Claim> getAllClaims();
 }
